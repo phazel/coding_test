@@ -38,5 +38,5 @@ assert game.bonus['me'] == []
 print('bonus round working correctly for a final round less than 10')
 
 # try it for yourself:
-#game = bowling_game(players = ['bill', 'ted'])
-#game.play()
+game = bowling_game(players = ['bill', 'ted'])
+game.play()
