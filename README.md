@@ -20,13 +20,21 @@ to input 1 or two more bowls respectively.
 The file bowling.py contains the class, bowls_test.py contains a series of assert statements and a commented out game if you wish to run it.
 
 The class functions are as follows:
+
 __init__: Initialises an instance of the class, with a list of players a dictionary of their regular scores and a seperate dictionary for their bonuses
+
 display_score: displays the score of the player
+
 calculate_score: calculates score of a player.  It assumes that that a full game has been played can be adapted to work with incomplete score set
+
 play: goes through the frames taking input for each players score
+
 frame: takes input for each players score in the frame
+
 validator: confirms that the input is a valid score 
+
 roll: accepts input of a single roll, calls the validator
+
 bonus_rounds: takes input of final round, if the 10 bowl was a spare or a score
 
 
