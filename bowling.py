@@ -1,6 +1,6 @@
 class bowling_game:
     def __init__(self, players):
-        self.players = players
+        self.players = players # while not a requirement it seems like building the capability of many players is easier done now
         self.score = {}
         self.bonus = {}
         for player in players:
@@ -47,9 +47,6 @@ class bowling_game:
             total_score += (sum(bowls[9]))
         return total_score
 
-    def update_score(self, player, score):
-        self.score[player] = score
-
     def play(self):
         for i in range(10):
             self.frame((i+1)) # people don't like counting from 0
@@ -68,16 +65,25 @@ class bowling_game:
                 frame_bowls.append(self.roll(limit = (10-frame_bowls[0])))
             self.score[player].append(frame_bowls)
 
-    def roll(self, limit = 10): # we need to have valiation that the roll is an integer, less than the limit still need to confirm what happens when you give it a decimal
-        bowl = input()
+    def validator(self, num, limit):
         try:
-            bowl = int(bowl)
+            num = int(num) # this leave the possibilty of someone inputting a decimal,
         except:
             print("Please enter a valid integer")
-            bowl = roll()
-        if bowl > limit:
+            return None
+        if num > limit: # can't roll higher than the number of pins standing
             print("You can't roll higher than {}, please enter a real bowling score".format(limit))
-            bowl = roll()
+            return None
+        if num < 0: # sooner or later someone will do it
+            print("Please explain to the programmer how your roll increased the number of pins present. \n Please enter a valid number greater than or equal to 0")
+            return None
+        return num
+
+    def roll(self, limit = 10): # we need to have valiation that the roll is an integer, less than the limit still need to confirm what happens when you give it a decimal
+        bowl = input()
+        bowl = self.validator(bowl, limit)
+        if not bowl:
+            bowl = self.roll()
         return bowl
 
     def bonus_rounds(self):
