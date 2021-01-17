@@ -67,7 +67,8 @@ class bowling_game:
 
     def validator(self, num, limit):
         try:
-            num = int(num) # this leave the possibilty of someone inputting a decimal,
+            num = int(num) # this leave the possibilty of someone inputting a decimal, this could be handled with a replace or regex
+            # as we're avoiding imports and I would prefer regex rounding down will do for the moment
         except:
             print("Please enter a valid integer")
             return None
