@@ -1,3 +1,14 @@
+# Coding_Test
+
+## Setup
+
+- Install python >=3.6
+- `python3 -m venv ./env`
+- `source env`
+- `source env/bin/activate`
+
+## Notes
+
 This is an attempt at the coding challenge set here:
 https://github.com/DiUS/coding-tests/blob/master/dius_bowling.md
 
