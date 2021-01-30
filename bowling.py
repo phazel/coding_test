@@ -37,6 +37,16 @@ class bowling_game:
             frame_score = sum(bowls[8])
         return frame_score
 
+    def calculate_round_ten(bowls, bonus):
+        frame_score = 0
+        if bowls[9][0] == 10:
+            frame_score += (10 + sum(bonus))
+        elif sum(bowls[9]) == 10:
+            frame_score += (10 + bonus[0])
+        else:
+            frame_score += (sum(bowls[9]))
+        return frame_score
+
     def calculate_score(self, player):
         bowls = self.score[player]
         total_score = 0
@@ -44,14 +54,9 @@ class bowling_game:
             frame_score = calculate_standard_frame(i, bowls)
             total_score += frame_score
         # round nine scoring
-        total_score+=  calculate_round_nine(bowls, self.bonus[player])
+        total_score +=  calculate_round_nine(bowls, self.bonus[player])
         # round ten scoring
-        if bowls[9][0] == 10:
-            total_score += (10 + sum(self.bonus[player]))
-        elif sum(bowls[9]) == 10:
-            total_score += (10 + self.bonus[player][0])
-        else:
-            total_score += (sum(bowls[9]))
+        total_score += calculate_round_ten(bowls, self.bonus[player])
         return total_score
 
     def play(self):
