@@ -11,17 +11,17 @@ class bowling_game:
     def display_score(self, player):
         print("the score of player {} is {}".format(player, self.calculate_score(player)))
 
-    def calculate_standard_frame(i,bowls ):
-        if bowls[i][0] == 10: #strike sccore
+    def calculate_standard_frame(bowls):
+        if bowls[0][0] == 10: #strike sccore
             frame_score = 10
-            if bowls[i+1][0] == 10:
-                frame_score += 10 + bowls[i+2][0]
+            if bowls[1][0] == 10:
+                frame_score += 10 + bowls[2][0]
             else:
-                frame_score += sum(bowls[i+1])
-        elif sum(bowls[i]) == 10: #spare score
-            frame_score = 10 + bowls[i+1][0]
+                frame_score += sum(bowls[1])
+        elif sum(bowls[0]) == 10: #spare score
+            frame_score = 10 + bowls[1][0]
         else:
-            frame_score = sum(bowls[i])
+            frame_score = sum(bowls[0])
         return frame_score
 
     def calculate_round_nine(bowls, bonus):
@@ -51,7 +51,7 @@ class bowling_game:
         bowls = self.score[player]
         total_score = 0
         for i in range(8): # for the first 8 rounds we don't have to worry about bonus two bowls
-            frame_score = calculate_standard_frame(i, bowls)
+            frame_score = calculate_standard_frame(bowls[i:(i+2)])
             total_score += frame_score
         # round nine scoring
         total_score +=  calculate_round_nine(bowls, self.bonus[player])
