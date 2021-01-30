@@ -35,7 +35,31 @@ def describe_standard_frame():
 
 def describe_round_nine():
     def test_two_gutters_frame():
-        frame = 9
-        two_gutters = [[],[],[],[],[],[],[],[],[0,0]]
-        result = bowling_game.calculate_round_nine( two_gutters)
+        frame = [[],[],[],[],[],[],[],[],[0,0]]
+        bonus = []
+        result = bowling_game.calculate_round_nine(frame, bonus)
         assert result == 0
+
+    def test_strike_frame():
+        frame = [[],[],[],[],[],[],[],[],[10],[2,2]]
+        bonus = []
+        result = bowling_game.calculate_round_nine(frame, bonus)
+        assert result == 14
+
+    def test_double_strike_frame():
+        frame = [[],[],[],[],[],[],[],[],[10],[10]]
+        bonus = [7,3]
+        result = bowling_game.calculate_round_nine(frame, bonus)
+        assert result == 27
+
+    def test_triple_strike_frame():
+        frame = [[],[],[],[],[],[],[],[],[10],[10]]
+        bonus = [10,8]
+        result = bowling_game.calculate_round_nine(frame, bonus)
+        assert result == 30
+
+    def test_spare_frame():
+        frame = [[],[],[],[],[],[],[],[],[8,2],[4]]
+        bonus = []
+        result = bowling_game.calculate_round_nine(frame, bonus)
+        assert result == 14
