@@ -32,3 +32,10 @@ def describe_standard_frame():
         spare = [[2,8],[3,5]]
         result = bowling_game.calculate_standard_frame(frame, spare)
         assert result == 13
+
+def describe_round_nine():
+    def test_two_gutters_frame():
+        frame = 9
+        two_gutters = [[],[],[],[],[],[],[],[],[0,0]]
+        result = bowling_game.calculate_round_nine( two_gutters)
+        assert result == 0
